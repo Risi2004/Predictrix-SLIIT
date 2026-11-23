@@ -1,0 +1,41 @@
+.ward-submit-form {
+  display: grid;
+  gap: 14px;
+}
+
+.ward-submit-form .ward-field-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.ward-parser-row {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.ward-submit-button {
+  justify-self: start;
+  margin-top: 2px;
+}
+
+.ward-next-steps {
+  width: 100%;
+}
+
+.ward-next-steps .a {
+  color: var(--chrome);
+}
+
+.ward-demo-note {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+@media (max-width: 620px) {
+  .ward-next-steps li {
+    grid-template-columns: 32px minmax(0, 1fr);
+  }
+}

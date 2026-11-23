@@ -1,0 +1,10 @@
+/* =====================================================================
+   CIRCULA — Inventory Management View Styles
+   Inherits design tokens and base cards from index.css.
+   ===================================================================== */
+
+.inventory-management {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
