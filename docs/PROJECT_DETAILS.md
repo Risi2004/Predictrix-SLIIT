@@ -43,9 +43,8 @@ Blood is held by many separate banks with no shared live view of stock. Hospital
 |---|---|
 | Anthropic Claude | Project ideation, proposal drafting, UI design prototype, backend code assistance, documentation |
 | OpenAI Codex | Front-end code assistance (React port) |
-| _add any other tool a team member used_ | |
 
-> Competition rule 7: every model and AI tool must be declared. Each member: please add any tool you used.
+All AI models and AI tools used to build SERA are listed above (competition rule 7).
 
 ## Data and mocks (disclosure)
 
