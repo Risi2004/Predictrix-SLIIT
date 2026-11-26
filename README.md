@@ -109,11 +109,13 @@ Results go to `project/outputs/benchmark/<run>/results.csv` and `summary.md`, an
 - **Platelet transfers** between banks are not simulated (they need agitated, temperature-controlled transport).
 - See `docs/PROJECT_DETAILS.md` for all models and AI tools used.
 
-## Team
+## Team and contributions
 
-| Member | Role |
-|---|---|
-| Shebulan Joshwel | Project lead · architecture, agents, UI/UX & front-end |
-| Jegatheesan Risikesan | Agent intelligence |
-| Jazeel Jaufer | Simulation & blood bank agents |
-| Sathalogithasiva Hariram | Safety rules, donors & evaluation |
+**Team Predictrix** · Sri Lanka Institute of Information Technology (SLIIT)
+
+| Member | Contributions | Share |
+|---|---|---|
+| **Shebulan Joshwel** (team lead) | Project idea and plan; system architecture and Case Board; Orchestrator and Logistics agents; trace log and replay; UI/UX design and React front-end; FastAPI layer; documentation; demo video | 30% |
+| **Jegatheesan Risikesan** | LangGraph workflow and officer approval step; Request and Auditor agents; AI model layer (retries, time limits, validation, fallback, cost tracking); single-agent baseline | 30% |
+| **Jazeel Jaufer** | Synthetic blood network and scenarios; Blood Bank Agents; routing on the road graph; OR-Tools reference solver | 20% |
+| **Sathalogithasiva Hariram** | Blood-type compatibility, expiry and priority rules with tests; Donor Agent; rules-only baseline; benchmark and human study | 20% |
