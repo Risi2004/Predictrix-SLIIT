@@ -50,7 +50,7 @@ class LLM:
             self.tracer.emit(agent, "llm.skipped", case_id, sim_minute, {"reason": "LLM disabled or no API key"}, model, fallback=True)
             self.stats["fallbacks"] = self.stats.get("fallbacks", 0) + 1
             return None
-        body = {"model": model, "temperature": 0.1, "max_tokens": max_tokens, "usage": {"include": True},
+        body = {"model": model, "temperature": 0.1, "max_tokens": max(max_tokens, 1500), "reasoning": {"effort": "low", "exclude": True}, "provider": {"require_parameters": True}, "usage": {"include": True},
                 "response_format": {"type": "json_object"},
                 "messages": [{"role": "system", "content": system + "\nReply with ONE JSON object only."},
                              {"role": "user", "content": user}]}

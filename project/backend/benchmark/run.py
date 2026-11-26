@@ -30,8 +30,8 @@ from ..domain.world import World
 from ..trace import Tracer
 
 SCENARIOS = {  # name: (mean minutes between requests, horizon minutes) — one simulated day each
-    "normal": (30, 1440), "dengue": (16, 1440), "accident": (14, 1440),
-    "stockout": (26, 1440), "duplicates": (24, 1440), "missing": (26, 1440),
+    "normal": (4, 60), "dengue": (16, 1440), "accident": (14, 1440),
+    "stockout": (26, 1440), "duplicates": (3, 60), "missing": (26, 1440),
 }
 STOCK_SCALE = 0.4   # benchmark networks run lean so that choices matter (shortages and expiry happen)
 URGENT = ("Critical", "Urgent")
@@ -141,7 +141,7 @@ class SingleAgent(Contestant):
             f"Open requests: {open_reqs}\nStock:\n" + "\n".join(lines) +
             "\nChoose ONE bank and donor blood type. Keys: comp ('RBC'/'PLT'), units (int), bank (bank id or null), "
             "donor_type, duplicate (true if this repeats an open request), call_donors (true if no stock).",
-            ["bank", "donor_type", "duplicate"], req["id"], self.w.clock, max_tokens=300)
+            ["bank", "donor_type", "duplicate"], req["id"], self.w.clock, max_tokens=1500)
         req["comp"] = req.get("comp") or (out or {}).get("comp") or "RBC"
         req["units"] = req.get("units") or int((out or {}).get("units") or 1)
         req["status"] = "awaiting"

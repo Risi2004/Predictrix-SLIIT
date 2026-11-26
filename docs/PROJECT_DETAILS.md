@@ -62,7 +62,7 @@ Blood is held by many separate banks with no shared live view of stock. Hospital
 ## Benchmark results
 
 Run `bench-20261126-142509` · `python main.py benchmark --no-llm` · 6 scenarios × 2 seeds × 1 simulated day each · lean network (40% stock) · synthetic data.
-Language model OFF for this run (agents on rule fallbacks), so the single-agent baseline (B) was not run; an AI-on run is planned with paid credits.
+Language model OFF for this run (agents on rule fallbacks), so the single-agent baseline (B) was not run; the AI-on comparison with B follows below.
 
 | Scenario | Contestant | Unmet urgent % | Incompatible | Units expired | Median fill (min) | Near-expiry units used/moved | Units sent to duplicates |
 |---|---|---|---|---|---|---|---|
@@ -83,7 +83,26 @@ Reference (perfect information, OR-Tools min-cost flow): best possible median tr
 
 **Findings.** SERA wasted fewer or equal units in every scenario and used or moved 5–14× more near-expiry units. It caught duplicate requests with no false flags and never made an incompatible match.
 **Trade-offs.** Deliveries were 0.5–2.5 min slower (SERA prefers units that would otherwise expire). Bank safety reserves and a non-replying bank left 1.7–2.1% of urgent requests waiting for donors in the stock-out and missing-data scenarios.
-**Limitations.** Synthetic data; 2 seeds; language model off in this run; "near-expiry used/moved" includes officer-approved transfers between banks; human baseline (D) pending.
+**Limitations.** Synthetic data; 2 seeds; language model off in this run; "near-expiry used/moved" includes officer-approved transfers between banks.
+
+### AI-on comparison: SERA (A) vs single agent (B) vs rules (C)
+
+Run `bench-20261126-180756` · `python main.py benchmark --scenarios normal,duplicates --seeds 1` · language model **ON** (`qwen/qwen3.8-27b` via OpenRouter) · one **1-hour peak-load window** per scenario (a new request about every 4 min in Normal and every 3 min in Duplicates; set in `backend/benchmark/run.py`) · synthetic data · total model cost **$0.19** · **0 fallbacks** (every agent step used the model).
+
+| Scenario | Contestant | Unmet urgent % | Incompatible | Median fill (min) | Near-expiry units used/moved | Fairness gap % | Unneeded donor calls | Duplicates caught | False duplicate flags | Units sent to duplicates | Cost (USD) |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| Normal | A · SERA | **0.0** | 0 | 9 | **38** | **0.0** | 1 | 0 | **0** | 0 | 0.04 |
+| | B · Single agent | 33.3 | 0 | 7 | 6 | 57.1 | 0 | 0 | 3 | 0 | 0.04 |
+| | C · Rules | 0.0 | 0 | 8 | 6 | 0.0 | 1 | 0 | 0 | 0 | 0.00 |
+| Duplicates | A · SERA | 0.0 | 0 | 9 | **52** | 50.0 | 3 | **3** | **0** | **0** | 0.05 |
+| | B · Single agent | 0.0 | 0 | 9 | 4 | 50.0 | 0 | 2 | 0 | 1 | 0.07 |
+| | C · Rules | 0.0 | 0 | 8 | 20 | 50.0 | 4 | 0 | 0 | 2 | 0.00 |
+
+Reference (perfect information, OR-Tools): best possible median fill 8 min in both windows.
+
+**Findings.** With the same model and the same requests, splitting the work across agents beat one agent doing everything. In Normal, the single agent left a third of urgent requests unmet, wrongly flagged 3 genuine requests as duplicates, and served hospitals unevenly (57% fairness gap); SERA filled every urgent request with no false flags. In Duplicates, SERA's Auditor caught all 3 duplicates and sent no blood to them; the single agent caught 2 and sent 1 unit to a duplicate; the rules baseline caught none and sent 2. SERA used or moved 6–13× more near-expiry units than the single agent, at the same or lower model cost.
+**Trade-offs.** SERA's median fill was 2 min slower than the single agent in Normal (it prefers units that would otherwise expire), and it made 3 unneeded donor calls in Duplicates where the single agent made none.
+**Limitations.** One seed and one-hour windows, so each scenario has only a handful of urgent requests and the percentages are noisy (33.3% is a small count). Units expired is 0 for everyone because one hour is too short for blood to expire; the full-day run above is the evidence for waste. The windows were shortened from a full day to fit the model budget.
 
 ### D · Human coordinators (human study)
 
