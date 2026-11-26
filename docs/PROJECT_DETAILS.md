@@ -85,6 +85,21 @@ Reference (perfect information, OR-Tools min-cost flow): best possible median tr
 **Trade-offs.** Deliveries were 0.5–2.5 min slower (SERA prefers units that would otherwise expire). Bank safety reserves and a non-replying bank left 1.7–2.1% of urgent requests waiting for donors in the stock-out and missing-data scenarios.
 **Limitations.** Synthetic data; 2 seeds; language model off in this run; "near-expiry used/moved" includes officer-approved transfers between banks; human baseline (D) pending.
 
+### D · Human coordinators (human study)
+
+4 volunteers (anonymised P1–P4) each handled the same 10 requests on the same stock sheet as SERA (`docs/Workflow.md` §5; test pack: SERA Human Study — Coordinator Test). Participants worked remotely and timed themselves; no blood-bank professionals took part.
+
+| | P1 · medicine undergrad | P2 · engineering undergrad | P3 · software eng. undergrad | P4 · biomedical graduate | SERA (rule mode) |
+|---|---|---|---|---|---|
+| Incompatible sends | 0 | 0 | 1 | 0 | 0 |
+| Duplicates caught (of 2) | 2 | 2 | 1 | 1 | 2 |
+| Questioned inflated request #10 | Yes | Yes | No | No | Yes |
+| Near-expiry units used (of 4 requests) | 3 | 4 | 2 | 4 | 4 |
+| Urgent requests not filled safely | 0 | 0 | 1 | 0 | 0 |
+| Median decision time | 39 s | 20 s | 23 s | 37.5 s | < 1 s |
+
+**Findings.** Two of four people matched SERA on safety and duplicates. One made an incompatible match (A+ red cells for an A− patient). Two sent blood to a duplicate or inflated request. SERA made none of these errors and decided each request in under a second.
+**Limitations.** Small sample (n = 4), mostly non-experts, remote and self-timed; one stock snapshot; SERA in rule mode.
 
 
 ## Limitations
