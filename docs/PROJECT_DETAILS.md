@@ -61,7 +61,31 @@ Blood is held by many separate banks with no shared live view of stock. Hospital
 
 ## Benchmark results
 
-Run `python main.py benchmark` and copy the tables from `project/outputs/benchmark/<run>/summary.md` here, with sample sizes, model version and any failures.
+Run `bench-20261126-142509` · `python main.py benchmark --no-llm` · 6 scenarios × 2 seeds × 1 simulated day each · lean network (40% stock) · synthetic data.
+Language model OFF for this run (agents on rule fallbacks), so the single-agent baseline (B) was not run; an AI-on run is planned with paid credits.
+
+| Scenario | Contestant | Unmet urgent % | Incompatible | Units expired | Median fill (min) | Near-expiry units used/moved | Units sent to duplicates |
+|---|---|---|---|---|---|---|---|
+| Normal | A · SERA | 0.0 | 0 | 10.5 | 9.5 | 276 | 5.0 |
+| | C · Rules | 0.0 | 0 | 11.5 | 8.0 | 24.5 | 5.5 |
+| Dengue surge | A · SERA | 0.0 | 0 | 4.5 | 9.75 | 321.5 | 7.0 |
+| | C · Rules | 0.0 | 0 | 7.5 | 9.0 | 50 | 10.0 |
+| Mass-casualty | A · SERA | 0.55 | 0 | 12.0 | 17.0 | 277 | 21.0 |
+| | C · Rules | 0.55 | 0 | 12.0 | 17.0 | 19 | 30.5 |
+| Bank stock-out | A · SERA | 2.1 | 0 | 7.0 | 10.5 | 263.5 | 5.0 |
+| | C · Rules | 0.0 | 0 | 9.0 | 8.0 | 19.5 | 5.5 |
+| Duplicates | A · SERA | 0.0 | 0 | 11.5 | 8.5 | 266.5 | 37.5 |
+| | C · Rules | 0.0 | 0 | 12.5 | 8.0 | 30 | 50.5 |
+| Missing data | A · SERA | 1.7 | 0 | 9.0 | 9.0 | 259 | 3.5 |
+| | C · Rules | 0.0 | 0 | 13.0 | 8.0 | 21 | 6.5 |
+
+Reference (perfect information, OR-Tools min-cost flow): best possible median travel time 8–14 min.
+
+**Findings.** SERA wasted fewer or equal units in every scenario and used or moved 5–14× more near-expiry units. It caught duplicate requests with no false flags and never made an incompatible match.
+**Trade-offs.** Deliveries were 0.5–2.5 min slower (SERA prefers units that would otherwise expire). Bank safety reserves and a non-replying bank left 1.7–2.1% of urgent requests waiting for donors in the stock-out and missing-data scenarios.
+**Limitations.** Synthetic data; 2 seeds; language model off in this run; "near-expiry used/moved" includes officer-approved transfers between banks; human baseline (D) pending.
+
+
 
 ## Limitations
 
