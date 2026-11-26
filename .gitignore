@@ -109,3 +109,8 @@ ehthumbs.db
 ehthumbs_vista.db
 Desktop.ini
 $RECYCLE.BIN/
+
+# SERA runtime outputs (commit selected traces/benchmarks deliberately with git add -f)
+project/outputs/sera.db
+project/outputs/traces/run-*.jsonl
+project/data/*.graphml

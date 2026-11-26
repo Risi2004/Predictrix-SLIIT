@@ -21,7 +21,7 @@ export default function Sidebar({ role, awaitingCount }) {
             fill="url(#lg)"
           />
         </svg>
-        <span>CIRCULA</span>
+        <span>SERA</span>
       </div>
 
       <nav className="nav" id="nav" aria-label="Sections">

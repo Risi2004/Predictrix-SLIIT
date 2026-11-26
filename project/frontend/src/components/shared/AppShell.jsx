@@ -45,12 +45,6 @@ export default function AppShell({
           <aside id="drawer" hidden aria-label="Case details" />
         </>
       )}
-
-      {/* Persistent 3D canvas park for Phase 7 */}
-      <div hidden id="canvas-park">
-        <canvas id="cv-heart-sm" />
-        <canvas id="cv-dna" />
-      </div>
     </div>
   );
 }

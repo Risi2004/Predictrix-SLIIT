@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import {
   fmt,
   hosp,
@@ -15,6 +14,7 @@ import {
 } from '../../data';
 import LiveMap from '../shared/LiveMap';
 import './CommandCentre.css';
+import Helix from '../shared/Helix';
 
 function QCard({ req, onApprove, onOpenCase }) {
   const o = req.plan?.options?.[req.choice] || req.plan?.options?.[0];
@@ -141,20 +141,6 @@ export default function CommandCentre({ state, onNavigate, onOpenCase, onApprove
     .reduce((acc, x) => acc + x.l.u, 0);
   const activeDels = activeDeliveries(state.deliveries);
 
-  // Mount 3D pulse canvas if available
-  useEffect(() => {
-    const slot = document.querySelector('[data-slot="pulse"]');
-    const canvas = document.getElementById('cv-heart-sm');
-    const park = document.getElementById('canvas-park');
-    if (slot && canvas && canvas.parentNode !== slot) {
-      slot.appendChild(canvas);
-    }
-    return () => {
-      if (park && canvas && canvas.parentNode !== park) {
-        park.appendChild(canvas);
-      }
-    };
-  }, []);
 
   return (
     <div className="command-centre">
@@ -283,7 +269,7 @@ export default function CommandCentre({ state, onNavigate, onOpenCase, onApprove
             <h2>Network state</h2>
             <span className="mono">sequence active</span>
           </header>
-          <div className="slot" data-slot="pulse" />
+          <div className="slot" data-slot="pulse"><Helix camz={4.8} tilt={-0.35} /></div>
           <div style={{ display: 'grid', gap: '4px' }}>
             <span className="mono">Status</span>
             <span className="bpm" id="bpm">

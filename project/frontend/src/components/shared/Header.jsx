@@ -41,6 +41,9 @@ export default function Header({
           <option value="normal">Scenario · Normal night</option>
           <option value="dengue">Scenario · Dengue surge</option>
           <option value="accident">Scenario · Mass-casualty accident</option>
+          <option value="stockout">Scenario · Bank stock-out</option>
+          <option value="duplicates">Scenario · Inflated or duplicate requests</option>
+          <option value="missing">Scenario · Missing or late data</option>
         </select>
       )}
 

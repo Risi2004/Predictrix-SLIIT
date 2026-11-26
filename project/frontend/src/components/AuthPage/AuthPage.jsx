@@ -1,4 +1,5 @@
 import './AuthPage.css';
+import Helix from '../shared/Helix';
 
 export default function AuthPage({ onSelectRole }) {
   return (
@@ -25,6 +26,7 @@ export default function AuthPage({ onSelectRole }) {
             <circle cx="330" cy="760" r="30" />
           </g>
         </svg>
+        <Helix camz={6.6} hx={-0.05} tilt={-0.2} scale={1} style={{ zIndex: 1 }} />
         <div className="si-rule"></div>
 
         <div className="ann ann-intro">
@@ -33,7 +35,7 @@ export default function AuthPage({ onSelectRole }) {
 
         <div className="ann ann-specimen">
           <b>Specimen name:</b>
-          <span>Circula Core</span>
+          <span>SERA Core</span>
           <b>Classification:</b>
           <span>Blood network coordination</span>
           <b>Structure:</b>
@@ -84,7 +86,7 @@ export default function AuthPage({ onSelectRole }) {
       </div>
 
       <div className="si-panel">
-        <div className="wordmark">CIRCULA</div>
+        <div className="wordmark">SERA</div>
         <h1>
           No patient should wait for blood that <em>already exists.</em>
         </h1>

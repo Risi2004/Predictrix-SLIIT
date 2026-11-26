@@ -1,5 +1,5 @@
 /* =============================================================
-   CIRCULA — App-Level React Root Styles
+   SERA — App-Level React Root Styles
    Scope : Adjustments specific to the React #root mount point.
            All design tokens and component classes live in
            index.css. Do NOT add duplicate variables here.
@@ -7,7 +7,7 @@
 
 /*
   Reset the Vite default #root width/border/centering.
-  CIRCULA is a full-viewport two-panel layout (#signin / #app)
+  SERA is a full-viewport two-panel layout (#signin / #app)
   that must fill the entire viewport without horizontal
   centering constraints.
 */

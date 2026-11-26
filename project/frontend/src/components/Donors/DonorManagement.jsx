@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { REGISTRY, TYPES, COMP, netTotal } from '../../data';
 import './DonorManagement.css';
+import Helix from '../shared/Helix';
 
 export default function DonorManagement({
   state,
@@ -11,20 +12,6 @@ export default function DonorManagement({
   const [campType, setCampType] = useState('O-');
   const [campUnits, setCampUnits] = useState(4);
 
-  // Mount 3D DNA canvas if available
-  useEffect(() => {
-    const slot = document.querySelector('[data-slot="dna"]');
-    const canvas = document.getElementById('cv-dna');
-    const park = document.getElementById('canvas-park');
-    if (slot && canvas && canvas.parentNode !== slot) {
-      slot.appendChild(canvas);
-    }
-    return () => {
-      if (park && canvas && canvas.parentNode !== park) {
-        park.appendChild(canvas);
-      }
-    };
-  }, []);
 
   const totalRegistered = Object.values(REGISTRY).reduce((a, b) => a + b, 0);
   const maxRegistry = Math.max(...Object.values(REGISTRY));
@@ -89,7 +76,7 @@ export default function DonorManagement({
             </div>
           </div>
         </div>
-        <div className="slot" data-slot="dna" />
+        <div className="slot" data-slot="dna"><Helix camz={5.0} tilt={-0.62} scale={0.8} /></div>
       </section>
 
       {/* Main Grid: Calls List + Planning & Registry */}

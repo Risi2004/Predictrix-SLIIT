@@ -1,5 +1,5 @@
 /* =====================================================================
-   CIRCULA — Data & Simulation Engine Core
+   SERA — Data & Simulation Engine Core
    Faithful port of data models, logistics, and multi-agent simulation
    from curcula.html (Predictrix-SLIIT)
    ===================================================================== */
