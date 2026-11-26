@@ -1,0 +1,47 @@
+.ward-my-requests {
+  display: grid;
+  gap: 14px;
+}
+
+.ward-request-list {
+  display: grid;
+  gap: 14px;
+}
+
+.ward-request-card > header h2 {
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.ward-request-actions {
+  justify-content: flex-end;
+}
+
+.ward-stepper-scroll {
+  overflow-x: auto;
+}
+
+.ward-stepper {
+  min-width: 520px;
+}
+
+.ward-delivery-progress {
+  display: grid;
+  gap: 8px;
+}
+
+.ward-delivery-summary {
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+@media (max-width: 700px) {
+  .ward-request-card > header {
+    align-items: flex-start;
+  }
+
+  .ward-request-actions {
+    justify-content: flex-start;
+  }
+}

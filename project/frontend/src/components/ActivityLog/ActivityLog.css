@@ -1,0 +1,49 @@
+/* ActivityLog.css – Phase 5 Step 7 */
+
+/* Filter chips row */
+.al-chips {
+  margin-bottom: 20px;
+}
+
+/* Log card */
+.al-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Clickable request-ID links inside log entries */
+.al-ref {
+  color: var(--chrome);
+  text-decoration: underline;
+  text-decoration-color: var(--hair2);
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .06em;
+}
+
+.al-ref:hover {
+  text-decoration-color: var(--chrome);
+}
+
+/* Empty state */
+.al-empty {
+  padding: 40px 24px;
+  color: var(--muted);
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Overflow notice */
+.al-overflow {
+  padding: 10px 16px;
+  border-top: 1px solid var(--hair);
+  color: var(--muted);
+  font-size: 11px;
+  text-align: center;
+}
+
+/* Ensure the loglist fills card properly */
+.al-card .loglist {
+  padding: 0 4px;
+}

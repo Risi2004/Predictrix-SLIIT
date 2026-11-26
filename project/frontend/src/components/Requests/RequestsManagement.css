@@ -1,0 +1,10 @@
+/* =====================================================================
+   SERA — Requests Management View Styles
+   Inherits design tokens and base cards from index.css.
+   ===================================================================== */
+
+.requests-management {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}

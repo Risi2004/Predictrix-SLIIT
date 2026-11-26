@@ -1,0 +1,10 @@
+/* =====================================================================
+   SERA — Reports View Styles
+   Inherits design tokens and base cards from index.css.
+   ===================================================================== */
+
+.reports-view {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
