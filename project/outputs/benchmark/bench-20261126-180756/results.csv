@@ -1,0 +1,9 @@
+contestant,scenario,seed,repeat,requests,urgent,unmet_urgent_pct,incompatible,units_expired,median_fill_min,near_expiry_used,fairness_gap_pct,donor_calls,unneeded_donor_calls,true_duplicates,duplicates_caught,false_duplicate_flags,duplicate_units_sent,llm_calls,tokens,cost_usd,fallbacks,wall_seconds
+★ Reference (perfect information),normal,1,0,18,12,,0,,8.0,,,,,,,,,0,0,0,0,0
+A · SERA multi-agent,normal,1,0,18,12,0.0,0,0,9.0,38,0.0,1,1,0,0,0,0,52,27336,0.03837,0,103.3
+B · Single agent,normal,1,0,18,12,33.3,0,0,7.0,6,57.1,0,0,0,0,3,0,20,69533,0.03924,0,47.1
+C · Rules only,normal,1,0,18,12,0.0,0,0,8.0,6,0.0,1,1,0,0,0,0,0,0,0.0,0,0.0
+★ Reference (perfect information),duplicates,1,0,23,14,,0,,8.0,,,,,,,,,0,0,0,0,0
+A · SERA multi-agent,duplicates,1,0,23,12,0.0,0,0,9.0,52,50.0,3,3,3,3,0,0,68,34107,0.04767,0,132.0
+B · Single agent,duplicates,1,0,23,12,0.0,0,0,9.0,4,50.0,0,0,3,2,0,1,29,106485,0.06541,0,85.1
+C · Rules only,duplicates,1,0,23,12,0.0,0,0,8.0,20,50.0,4,4,3,0,0,2,0,0,0.0,0,0.0
